@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParkSmart NJIT – Find Parking Before You Arrive</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #CC0000;
+    --red-dark: #990000;
+    --red-light: #ff2222;
+    --white: #ffffff;
+    --off-white: #f8f8f8;
+    --gray: #555;
+    --light-gray: #e8e8e8;
+    --green: #28a745;
+    --yellow: #ffc107;
+    --text: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text);
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    background: var(--red);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--white);
+  }
+
+  .nav-btn {
+    background: var(--white);
+    color: var(--red);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .nav-btn:hover { background: #f0f0f0; }
+
+  /* ===== PAGE SECTIONS ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HOME PAGE ===== */
+  .hero {
+    background: var(--red);
+    color: var(--white);
+    text-align: center;
+    padding: 72px 40px 60px;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--red);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: #f0f0f0; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  .features-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .feature-item {
+    text-align: center;
+    padding: 28px 20px;
+    border-right: 1px solid var(--light-gray);
+  }
+
+  .feature-item:last-child { border-right: none; }
+
+  .feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .feature-item h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .feature-item p {
+    font-size: 0.82rem;
+    color: var(--gray);
+  }
+
+  /* Garage Table */
+  .garage-section {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  thead tr {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--light-gray);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: var(--off-white); }
+
+  tbody td {
+    padding: 14px 16px;
+    color: var(--text);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .badge-green { background: var(--green); }
+  .badge-yellow { background: var(--yellow); color: #333; }
+  .badge-red { background: var(--red); }
+
+  /* ===== DASHBOARD PAGE ===== */
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 60px);
+  }
+
+  .sidebar {
+    background: #1a1a1a;
+    color: white;
+    padding: 24px 0;
+  }
+
+  .sidebar-nav {
+    list-style: none;
+  }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 12px 24px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar-nav li a:hover, .sidebar-nav li a.active {
+    color: white;
+    background: rgba(255,255,255,0.05);
+    border-left-color: var(--red);
+  }
+
+  .dashboard-main {
+    padding: 32px 40px;
+    background: var(--off-white);
+  }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .dash-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+  }
+
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .alert-banner {
+    background: #fff8e1;
+    border-left: 4px solid var(--yellow);
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .garage-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .garage-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .garage-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .garage-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .garage-card .spots {
+    font-size: 0.82rem;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s;
+  }
+
+  .fill-green { background: var(--green); }
+  .fill-yellow { background: var(--yellow); }
+  .fill-red { background: var(--red); }
+
+  .pct-label {
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+
+  .chart-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .chart-section h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 100px;
+  }
+
+  .bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+  }
+
+  .bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+  }
+
+  .bar-label {
+    font-size: 0.7rem;
+    color: var(--gray);
+  }
+
+  /* ===== PRICING PAGE ===== */
+  .pricing-page {
+    padding: 60px 40px;
+    background: var(--off-white);
+    min-height: calc(100vh - 60px);
+  }
+
+  .pricing-title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .pricing-title h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+  }
+
+  .pricing-subtitle {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+  }
+
+  .plan-card {
+    background: white;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 28px 20px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .plan-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  }
+
+  .plan-card.featured {
+    border-color: var(--red);
+    box-shadow: 0 4px 20px rgba(204,0,0,0.15);
+  }
+
+  .popular-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  .plan-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .plan-price {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .plan-price .amount {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: var(--text);
+  }
+
+  .plan-price .period {
+    font-size: 0.82rem;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .plan-features {
+    list-style: none;
+    margin-bottom: 24px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .plan-features li { color: #444; }
+
+  .plan-features li.disabled {
+    color: #bbb;
+    text-decoration: line-through;
+  }
+
+  .plan-features li::before {
+    content: '✓ ';
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .plan-features li.disabled::before {
+    content: '✗ ';
+    color: #bbb;
+  }
+
+  .plan-btn {
+    width: 100%;
+    padding: 11px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    border: 2px solid var(--red);
+    transition: all 0.2s;
+  }
+
+  .plan-btn-primary {
+    background: var(--red);
+    color: white;
+  }
+
+  .plan-btn-primary:hover { background: var(--red-dark); }
+
+  .plan-btn-outline {
+    background: white;
+    color: var(--red);
+  }
+
+  .plan-btn-outline:hover { background: var(--off-white); }
+
+  .stripe-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray);
+  }
+
+  /* Checkout Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 10px;
+    padding: 36px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .modal h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
+
+  .modal .plan-summary {
+    background: var(--off-white);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--gray);
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus { border-color: var(--red); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .modal-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .btn-cancel {
+    flex: 1;
+    padding: 11px;
+    border: 1.5px solid var(--light-gray);
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    color: var(--gray);
+  }
+
+  .btn-pay {
+    flex: 2;
+    padding: 11px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+
+  .btn-pay:hover { background: var(--red-dark); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .success-msg .checkmark {
+    font-size: 3rem;
+    margin-bottom: 12px;
+  }
+
+  .success-msg h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    color: var(--green);
+  }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-page {
+    min-height: calc(100vh - 60px);
+  }
+
+  .about-hero {
+    background: var(--red);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .about-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 2.8rem;
+    margin-bottom: 14px;
+  }
+
+  .about-hero p {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.7;
+  }
+
+  .about-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .about-section {
+    margin-bottom: 48px;
+  }
+
+  .about-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--red);
+    display: inline-block;
+  }
+
+  .about-section p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .team-card {
+    background: var(--off-white);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 0 auto 10px;
+  }
+
+  .team-card h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .team-card p {
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+
+  .competitor-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .competitor-table th {
+    background: var(--off-white);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--light-gray);
+  }
+
+  .competitor-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .check { color: var(--green); font-weight: 700; }
+  .cross { color: #ccc; }
+  .highlight-row { background: #fff5f5; }
+
+  /* ===== LOGIN MODAL ===== */
+  .login-form { display: block; }
+  .login-success { display: none; text-align: center; padding: 10px 0; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .garage-cards { grid-template-columns: 1fr; }
+    .dashboard-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .features-bar { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">ParkSmart NJIT</div>
+  <ul class="nav-links">
+    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+    <li><a href="#" class="nav-link" data-page="dashboard">Dashboard</a></li>
+    <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+  </ul>
+  <button class="nav-btn" onclick="openLogin()">Login / Sign Up</button>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="home" class="page active">
+  <div class="hero">
+    <h1>Find Parking at NJIT<br>Before You Arrive</h1>
+    <p>Real-time garage availability + wait time predictions based on class schedules</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="navigate('dashboard')">View Live Availability</button>
+      <button class="btn-outline" onclick="navigate('pricing')">See Pricing</button>
+    </div>
+  </div>
+
+  <div class="features-bar">
+    <div class="feature-item">
+      <div class="feature-icon">🅿️</div>
+      <h3>Live Availability</h3>
+      <p>Updated every 30 sec</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⏱️</div>
+      <h3>Wait Time Predictions</h3>
+      <p>Based on class schedules</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔔</div>
+      <h3>Spot Alerts</h3>
+      <p>Push notifications to your phone</p>
+    </div>
+  </div>
+
+  <div class="garage-section">
+    <div class="section-title">Current Garage Status</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Garage</th>
+          <th>Location</th>
+          <th>Spots Available</th>
+          <th>% Full</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Garage 1</td>
+          <td>Warren St.</td>
+          <td>84</td>
+          <td>42%</td>
+          <td><span class="badge badge-green">Open</span></td>
+        </tr>
+        <tr>
+          <td>Garage 2</td>
+          <td>Summit St.</td>
+          <td>22</td>
+          <td>78%</td>
+          <td><span class="badge badge-yellow">Limited</span></td>
+        </tr>
+        <tr>
+          <td>Garage 3</td>
+          <td>MLK Blvd.</td>
+          <td>2</td>
+          <td>99%</td>
+          <td><span class="badge badge-red">Full</span></td>
+        </tr>
+        <tr>
+          <td>Garage 4</td>
+          <td>Bleeker St.</td>
+          <td>110</td>
+          <td>31%</td>
+          <td><span class="badge badge-green">Open</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== DASHBOARD PAGE ===== -->
+<div id="dashboard" class="page">
+  <div class="dashboard-layout">
+    <div class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active">📊 Dashboard</a></li>
+        <li><a href="#">🔔 My Alerts</a></li>
+        <li><a href="#">📈 Analytics</a></li>
+        <li><a href="#">👤 Account</a></li>
+        <li><a href="#">⚙️ Settings</a></li>
+        <li><a href="#">🚪 Logout</a></li>
+      </ul>
+    </div>
+    <div class="dashboard-main">
+      <div class="dash-header">
+        <div class="dash-title">Live Garage Dashboard</div>
+      </div>
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        Last updated: 9:14 AM &nbsp;● Live
+      </div>
+      <div class="alert-banner">
+        ⭐ <strong>Premium:</strong> Garage 3 predicted to open in ~22 min based on 10AM class dismissals
+      </div>
+      <div class="garage-cards">
+        <div class="garage-card">
+          <div class="garage-card-header">
+            <h4>Garage 1 – Warren St.</h4>
+            <span class="badge badge-green">Open</span>
+          </div>
+          <div class="spots">84 spots free</div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:42%"></div></div>
+          <div class="pct-label">42% full</div>
+        </div>
+        <div class="garage-card">
+          <div class="garage-card-header">
+            <h4>Garage 2 – Summit St.</h4>
+            <span class="badge badge-yellow">Limited</span>
+          </div>
+          <div class="spots">22 spots free</div>
+          <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:78%"></div></div>
+          <div class="pct-label">78% full</div>
+        </div>
+        <div class="garage-card">
+          <div class="garage-card-header">
+            <h4>Garage 3 – MLK Blvd.</h4>
+            <span class="badge badge-red">Full</span>
+          </div>
+          <div class="spots">2 spots free</div>
+          <div class="progress-bar"><div class="progress-fill fill-red" style="width:99%"></div></div>
+          <div class="pct-label">99% full</div>
+        </div>
+        <div class="garage-card">
+          <div class="garage-card-header">
+            <h4>Garage 4 – Bleeker St.</h4>
+            <span class="badge badge-green">Open</span>
+          </div>
+          <div class="spots">110 spots free</div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:31%"></div></div>
+          <div class="pct-label">31% full</div>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h4>Hourly Occupancy — Today</h4>
+        <div class="bar-chart">
+          <div class="bar-group"><div class="bar fill-green" style="height:30px"></div><div class="bar-label">7am</div></div>
+          <div class="bar-group"><div class="bar fill-green" style="height:42px"></div><div class="bar-label">8am</div></div>
+          <div class="bar-group"><div class="bar fill-yellow" style="height:60px"></div><div class="bar-label">9am</div></div>
+          <div class="bar-group"><div class="bar fill-red" style="height:88px"></div><div class="bar-label">10am</div></div>
+          <div class="bar-group"><div class="bar fill-red" style="height:92px"></div><div class="bar-label">11am</div></div>
+          <div class="bar-group"><div class="bar fill-yellow" style="height:68px"></div><div class="bar-label">12pm</div></div>
+          <div class="bar-group"><div class="bar fill-yellow" style="height:55px"></div><div class="bar-label">1pm</div></div>
+          <div class="bar-group"><div class="bar fill-green" style="height:38px"></div><div class="bar-label">2pm</div></div>
+          <div class="bar-group"><div class="bar fill-green" style="height:28px"></div><div class="bar-label">3pm</div></div>
+          <div class="bar-group"><div class="bar fill-green" style="height:22px"></div><div class="bar-label">4pm</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRICING PAGE ===== -->
+<div id="pricing" class="page">
+  <div class="pricing-page">
+    <div class="pricing-title"><h1>Choose Your Plan</h1></div>
+    <div class="pricing-subtitle">All plans include live garage availability. Upgrade anytime.</div>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">
+          <span class="amount">$0</span>
+          <span class="period">/ forever</span>
+        </div>
+        <ul class="plan-features">
+          <li>Live garage availability</li>
+          <li>Basic spot count</li>
+          <li class="disabled">Wait-time estimates</li>
+          <li class="disabled">Spot alerts</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline" onclick="openCheckout('Free Plan','$0')">Get Started</button>
+      </div>
+      <!-- Student Premium -->
+      <div class="plan-card featured">
+        <div class="popular-tag">⭐ Most Popular</div>
+        <div class="plan-name">Student Premium</div>
+        <div class="plan-price">
+          <span class="amount">$4.99</span>
+          <span class="period">/ month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Free</li>
+          <li>Wait-time estimates</li>
+          <li>Spot availability alerts</li>
+          <li>Parking history log</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openCheckout('Student Premium','$4.99/month')">Subscribe Now</button>
+      </div>
+      <!-- Semester Pass -->
+      <div class="plan-card">
+        <div class="plan-name">Semester Pass</div>
+        <div class="plan-price">
+          <span class="amount">$30</span>
+          <span class="period">/ semester</span>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Student</li>
+          <li>Peak-hour alerts</li>
+          <li>Priority notifications</li>
+          <li>Best value for commuters!</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openCheckout('Semester Pass','$30/semester')">Subscribe Now</button>
+      </div>
+      <!-- Faculty -->
+      <div class="plan-card">
+        <div class="plan-name">Faculty / Staff</div>
+        <div class="plan-price">
+          <span class="amount">$6.99</span>
+          <span class="period">/ month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Student</li>
+          <li>Priority alerts</li>
+          <li>Daily parking summaries</li>
+          <li>Reserved spot alerts</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openCheckout('Faculty/Staff Plan','$6.99/month')">Subscribe Now</button>
+      </div>
+    </div>
+    <div class="stripe-note">🔒 Payments by Stripe. No card data stored. Cancel anytime.</div>
+  </div>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div id="about" class="page">
+  <div class="about-page">
+    <div class="about-hero">
+      <h1>About ParkSmart NJIT</h1>
+      <p>We're solving one of NJIT's most frustrating daily problems — campus parking — using real data, smart predictions, and a simple subscription model.</p>
+    </div>
+    <div class="about-content">
+      <div class="about-section">
+        <h2>Our Concept</h2>
+        <p>ParkSmart NJIT is a campus parking intelligence platform built specifically for NJIT commuters. Unlike generic parking apps, we use anonymized NJIT ID scan data and class schedule patterns to predict when spots will open — before you even leave home.</p>
+        <p>The free tier shows live garage availability. Premium subscribers get wait-time predictions, spot alerts, and priority notifications — helping them plan smarter arrivals and reduce parking stress.</p>
+      </div>
+      <div class="about-section">
+        <h2>The Problem We Solve</h2>
+        <p>NJIT commuter students waste time circling full garages, especially between 9–11AM when class loads peak. Existing apps like ParkMobile and SpotHero handle payment and city parking — but none predict campus garage turnover. That's the gap ParkSmart fills.</p>
+        <table class="competitor-table">
+          <thead>
+            <tr><th>Feature</th><th>ParkMobile</th><th>SpotHero</th><th>ParkSmart NJIT</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Live garage availability</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr><td>Campus-specific data</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr class="highlight-row"><td>Predictive wait times</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr><td>Push alerts</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr><td>Payment processing</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="about-section">
+        <h2>SEO Strategy</h2>
+        <p>Our SEO strategy targets high-intent searches from NJIT commuters. Primary keywords include "NJIT parking," "NJIT garage availability," and "campus parking prediction app." The site uses structured headings, fast-loading pages, and mobile-first design to rank well on Google. Future plans include meta descriptions, a parking tips blog, and backlink partnerships with NJIT student publications.</p>
+      </div>
+      <div class="about-section">
+        <h2>Mobile Responsiveness</h2>
+        <p>ParkSmart NJIT is built with Bootstrap and a mobile-first approach. The dashboard, garage status table, and pricing cards all reflow cleanly on screens under 768px. Buttons and menus are touch-optimized. The site has been tested on iPhone and Android screen sizes and maintains full functionality at all breakpoints.</p>
+      </div>
+      <div class="about-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">AR</div>
+            <h4>Alexander Rivera</h4>
+            <p>Team Lead</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">AM</div>
+            <h4>Akaash Manickavel</h4>
+            <p>Backend / Database</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">AM</div>
+            <h4>Arjun Merchant</h4>
+            <p>Frontend / Design</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">ST</div>
+            <h4>Shafil Kabir Turzo</h4>
+            <p>Business / Research</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CHECKOUT MODAL ===== -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div id="checkoutForm">
+      <h2>Subscribe</h2>
+      <p style="font-size:0.85rem;color:var(--gray)">Stripe Test Mode — use card 4242 4242 4242 4242</p>
+      <div class="plan-summary" id="planSummary"></div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@njit.edu">
+      </div>
+      <div class="form-group">
+        <label>Card Number</label>
+        <input type="text" placeholder="4242 4242 4242 4242" maxlength="19">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Expiry</label>
+          <input type="text" placeholder="MM / YY" maxlength="7">
+        </div>
+        <div class="form-group">
+          <label>CVC</label>
+          <input type="text" placeholder="123" maxlength="3">
+        </div>
+      </div>
+      <div class="modal-btns">
+        <button class="btn-cancel" onclick="closeCheckout()">Cancel</button>
+        <button class="btn-pay" onclick="processPayment()">Pay Now</button>
+      </div>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="checkmark">✅</div>
+      <h3>Payment Successful!</h3>
+      <p style="font-size:0.88rem;color:var(--gray);margin-top:6px">Your subscription is now active. Welcome to ParkSmart!</p>
+      <button class="btn-pay" style="margin-top:20px;width:100%" onclick="closeCheckout()">Go to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <div class="login-form" id="loginForm">
+      <h2>Login / Sign Up</h2>
+      <div class="form-group" style="margin-top:20px">
+        <label>NJIT Email</label>
+        <input type="email" placeholder="you@njit.edu">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+      <div class="modal-btns">
+        <button class="btn-cancel" onclick="closeLogin()">Cancel</button>
+        <button class="btn-pay" onclick="doLogin()">Login</button>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gray);text-align:center;margin-top:14px">New user? <a href="#" onclick="navigate('pricing');closeLogin()" style="color:var(--red);font-weight:600">Choose a plan</a></p>
+    </div>
+    <div class="login-success" id="loginSuccess">
+      <div style="font-size:2.5rem;margin-bottom:10px">👋</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:6px">Welcome back!</h3>
+      <p style="font-size:0.88rem;color:var(--gray)">You're now logged in.</p>
+      <button class="btn-pay" style="margin-top:20px;width:100%" onclick="closeLogin();navigate('dashboard')">Go to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Navigation
+  function navigate(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+    document.querySelector(`.nav-link[data-page="${page}"]`)?.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navigate(link.dataset.page);
+    });
+  });
+
+  // Checkout
+  function openCheckout(plan, price) {
+    document.getElementById('planSummary').innerHTML = `<strong>${plan}</strong> — <span style="color:var(--red);font-weight:700">${price}</span>`;
+    document.getElementById('checkoutForm').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+    document.getElementById('checkoutModal').classList.add('open');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutModal').classList.remove('open');
+  }
+
+  function processPayment() {
+    document.getElementById('checkoutForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+
+  // Login
+  function openLogin() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('loginSuccess').style.display = 'none';
+    document.getElementById('loginModal').classList.add('open');
+  }
+
+  function closeLogin() {
+    document.getElementById('loginModal').classList.remove('open');
+  }
+
+  function doLogin() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('loginSuccess').style.display = 'block';
+  }
+
+  // Close modals on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
