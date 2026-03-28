@@ -27,7 +27,6 @@
     color: var(--text);
   }
 
-  /* ===== NAVBAR ===== */
   nav {
     background: var(--red);
     padding: 0 40px;
@@ -63,9 +62,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover, .nav-links a.active {
-    color: var(--white);
-  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
 
   .nav-btn {
     background: var(--white);
@@ -82,11 +79,9 @@
 
   .nav-btn:hover { background: #f0f0f0; }
 
-  /* ===== PAGE SECTIONS ===== */
   .page { display: none; }
   .page.active { display: block; }
 
-  /* ===== HOME PAGE ===== */
   .hero {
     background: var(--red);
     color: var(--white);
@@ -112,11 +107,7 @@
     margin-right: auto;
   }
 
-  .hero-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-  }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; }
 
   .btn-primary {
     background: var(--white);
@@ -161,11 +152,7 @@
   }
 
   .feature-item:last-child { border-right: none; }
-
-  .feature-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-  }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 8px; }
 
   .feature-item h3 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -176,17 +163,9 @@
     margin-bottom: 4px;
   }
 
-  .feature-item p {
-    font-size: 0.82rem;
-    color: var(--gray);
-  }
+  .feature-item p { font-size: 0.82rem; color: var(--gray); }
 
-  /* Garage Table */
-  .garage-section {
-    padding: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  .garage-section { padding: 40px; max-width: 900px; margin: 0 auto; }
 
   .section-title {
     font-family: 'Barlow Condensed', sans-serif;
@@ -196,16 +175,8 @@
     letter-spacing: 0.3px;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-  }
-
-  thead tr {
-    background: var(--red);
-    color: var(--white);
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead tr { background: var(--red); color: var(--white); }
 
   thead th {
     padding: 12px 16px;
@@ -215,17 +186,9 @@
     letter-spacing: 0.3px;
   }
 
-  tbody tr {
-    border-bottom: 1px solid var(--light-gray);
-    transition: background 0.15s;
-  }
-
+  tbody tr { border-bottom: 1px solid var(--light-gray); transition: background 0.15s; }
   tbody tr:hover { background: var(--off-white); }
-
-  tbody td {
-    padding: 14px 16px;
-    color: var(--text);
-  }
+  tbody td { padding: 14px 16px; color: var(--text); }
 
   .badge {
     display: inline-block;
@@ -240,22 +203,14 @@
   .badge-yellow { background: var(--yellow); color: #333; }
   .badge-red { background: var(--red); }
 
-  /* ===== DASHBOARD PAGE ===== */
   .dashboard-layout {
     display: grid;
     grid-template-columns: 220px 1fr;
     min-height: calc(100vh - 60px);
   }
 
-  .sidebar {
-    background: #1a1a1a;
-    color: white;
-    padding: 24px 0;
-  }
-
-  .sidebar-nav {
-    list-style: none;
-  }
+  .sidebar { background: #1a1a1a; color: white; padding: 24px 0; }
+  .sidebar-nav { list-style: none; }
 
   .sidebar-nav li a {
     display: block;
@@ -274,17 +229,9 @@
     border-left-color: var(--red);
   }
 
-  .dashboard-main {
-    padding: 32px 40px;
-    background: var(--off-white);
-  }
+  .dashboard-main { padding: 32px 40px; background: var(--off-white); }
 
-  .dash-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
+  .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 
   .dash-title {
     font-family: 'Barlow Condensed', sans-serif;
@@ -323,12 +270,7 @@
     border-radius: 0 4px 4px 0;
   }
 
-  .garage-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
+  .garage-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
 
   .garage-card {
     background: white;
@@ -337,12 +279,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }
 
-  .garage-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-  }
+  .garage-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
 
   .garage-card h4 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -351,41 +288,16 @@
     letter-spacing: 0.3px;
   }
 
-  .garage-card .spots {
-    font-size: 0.82rem;
-    color: var(--gray);
-    margin-bottom: 10px;
-  }
+  .garage-card .spots { font-size: 0.82rem; color: var(--gray); margin-bottom: 10px; }
 
-  .progress-bar {
-    height: 8px;
-    background: var(--light-gray);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 6px;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s;
-  }
-
+  .progress-bar { height: 8px; background: var(--light-gray); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
   .fill-green { background: var(--green); }
   .fill-yellow { background: var(--yellow); }
   .fill-red { background: var(--red); }
+  .pct-label { font-size: 0.78rem; color: var(--gray); }
 
-  .pct-label {
-    font-size: 0.78rem;
-    color: var(--gray);
-  }
-
-  .chart-section {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
+  .chart-section { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
 
   .chart-section h4 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -394,43 +306,14 @@
     margin-bottom: 16px;
   }
 
-  .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    height: 100px;
-  }
+  .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; }
 
-  .bar-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 4px;
-  }
+  .bar-group { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 4px; }
+  .bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 4px; }
+  .bar-label { font-size: 0.7rem; color: var(--gray); }
 
-  .bar {
-    width: 100%;
-    border-radius: 3px 3px 0 0;
-    min-height: 4px;
-  }
-
-  .bar-label {
-    font-size: 0.7rem;
-    color: var(--gray);
-  }
-
-  /* ===== PRICING PAGE ===== */
-  .pricing-page {
-    padding: 60px 40px;
-    background: var(--off-white);
-    min-height: calc(100vh - 60px);
-  }
-
-  .pricing-title {
-    text-align: center;
-    margin-bottom: 8px;
-  }
+  .pricing-page { padding: 60px 40px; background: var(--off-white); min-height: calc(100vh - 60px); }
+  .pricing-title { text-align: center; margin-bottom: 8px; }
 
   .pricing-title h1 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -438,18 +321,13 @@
     font-size: 2.4rem;
   }
 
-  .pricing-subtitle {
-    text-align: center;
-    color: var(--gray);
-    font-size: 0.95rem;
-    margin-bottom: 40px;
-  }
+  .pricing-subtitle { text-align: center; color: var(--gray); font-size: 0.95rem; margin-bottom: 40px; }
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 16px;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto 40px;
   }
 
@@ -462,9 +340,7 @@
     transition: box-shadow 0.2s;
   }
 
-  .plan-card:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
-  }
+  .plan-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
 
   .plan-card.featured {
     border-color: var(--red);
@@ -497,10 +373,7 @@
     letter-spacing: 0.5px;
   }
 
-  .plan-price {
-    text-align: center;
-    margin-bottom: 4px;
-  }
+  .plan-price { text-align: center; margin-bottom: 4px; }
 
   .plan-price .amount {
     font-family: 'Barlow Condensed', sans-serif;
@@ -509,37 +382,13 @@
     color: var(--text);
   }
 
-  .plan-price .period {
-    font-size: 0.82rem;
-    color: var(--gray);
-    display: block;
-    margin-bottom: 20px;
-  }
+  .plan-price .period { font-size: 0.82rem; color: var(--gray); display: block; margin-bottom: 20px; }
 
-  .plan-features {
-    list-style: none;
-    margin-bottom: 24px;
-    font-size: 0.85rem;
-    line-height: 1.8;
-  }
-
+  .plan-features { list-style: none; margin-bottom: 24px; font-size: 0.85rem; line-height: 1.8; }
   .plan-features li { color: #444; }
-
-  .plan-features li.disabled {
-    color: #bbb;
-    text-decoration: line-through;
-  }
-
-  .plan-features li::before {
-    content: '✓ ';
-    color: var(--green);
-    font-weight: 700;
-  }
-
-  .plan-features li.disabled::before {
-    content: '✗ ';
-    color: #bbb;
-  }
+  .plan-features li.disabled { color: #bbb; text-decoration: line-through; }
+  .plan-features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+  .plan-features li.disabled::before { content: '✗ '; color: #bbb; }
 
   .plan-btn {
     width: 100%;
@@ -553,27 +402,12 @@
     transition: all 0.2s;
   }
 
-  .plan-btn-primary {
-    background: var(--red);
-    color: white;
-  }
-
+  .plan-btn-primary { background: var(--red); color: white; }
   .plan-btn-primary:hover { background: var(--red-dark); }
-
-  .plan-btn-outline {
-    background: white;
-    color: var(--red);
-  }
-
+  .plan-btn-outline { background: white; color: var(--red); }
   .plan-btn-outline:hover { background: var(--off-white); }
+  .stripe-note { text-align: center; font-size: 0.8rem; color: var(--gray); }
 
-  .stripe-note {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--gray);
-  }
-
-  /* Checkout Modal */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -584,9 +418,7 @@
     justify-content: center;
   }
 
-  .modal-overlay.open {
-    display: flex;
-  }
+  .modal-overlay.open { display: flex; }
 
   .modal {
     background: white;
@@ -612,9 +444,7 @@
     font-size: 0.9rem;
   }
 
-  .form-group {
-    margin-bottom: 14px;
-  }
+  .form-group { margin-bottom: 14px; }
 
   .form-group label {
     display: block;
@@ -636,18 +466,8 @@
   }
 
   .form-group input:focus { border-color: var(--red); }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .modal-btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
 
   .btn-cancel {
     flex: 1;
@@ -677,16 +497,8 @@
 
   .btn-pay:hover { background: var(--red-dark); }
 
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 20px 0;
-  }
-
-  .success-msg .checkmark {
-    font-size: 3rem;
-    margin-bottom: 12px;
-  }
+  .success-msg { display: none; text-align: center; padding: 20px 0; }
+  .success-msg .checkmark { font-size: 3rem; margin-bottom: 12px; }
 
   .success-msg h3 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -696,17 +508,9 @@
     color: var(--green);
   }
 
-  /* ===== ABOUT PAGE ===== */
-  .about-page {
-    min-height: calc(100vh - 60px);
-  }
+  .about-page { min-height: calc(100vh - 60px); }
 
-  .about-hero {
-    background: var(--red);
-    color: white;
-    padding: 60px 40px;
-    text-align: center;
-  }
+  .about-hero { background: var(--red); color: white; padding: 60px 40px; text-align: center; }
 
   .about-hero h1 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -715,23 +519,10 @@
     margin-bottom: 14px;
   }
 
-  .about-hero p {
-    max-width: 560px;
-    margin: 0 auto;
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.7;
-  }
+  .about-hero p { max-width: 560px; margin: 0 auto; font-size: 1rem; opacity: 0.9; line-height: 1.7; }
 
-  .about-content {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 60px 40px;
-  }
-
-  .about-section {
-    margin-bottom: 48px;
-  }
+  .about-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
+  .about-section { margin-bottom: 48px; }
 
   .about-section h2 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -743,25 +534,11 @@
     display: inline-block;
   }
 
-  .about-section p {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: #333;
-    margin-bottom: 12px;
-  }
+  .about-section p { font-size: 0.95rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
 
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
-  .team-card {
-    background: var(--off-white);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-  }
+  .team-card { background: var(--off-white); border-radius: 8px; padding: 20px; text-align: center; }
 
   .team-avatar {
     width: 60px;
@@ -778,22 +555,10 @@
     margin: 0 auto 10px;
   }
 
-  .team-card h4 {
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
-  }
+  .team-card h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .team-card p { font-size: 0.78rem; color: var(--gray); }
 
-  .team-card p {
-    font-size: 0.78rem;
-    color: var(--gray);
-  }
-
-  .competitor-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-  }
+  .competitor-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
 
   .competitor-table th {
     background: var(--off-white);
@@ -803,22 +568,16 @@
     border-bottom: 2px solid var(--light-gray);
   }
 
-  .competitor-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--light-gray);
-  }
-
+  .competitor-table td { padding: 10px 14px; border-bottom: 1px solid var(--light-gray); }
   .check { color: var(--green); font-weight: 700; }
   .cross { color: #ccc; }
   .highlight-row { background: #fff5f5; }
 
-  /* ===== LOGIN MODAL ===== */
   .login-form { display: block; }
   .login-success { display: none; text-align: center; padding: 10px 0; }
 
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
-    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
     .garage-cards { grid-template-columns: 1fr; }
     .dashboard-layout { grid-template-columns: 1fr; }
     .sidebar { display: none; }
@@ -826,13 +585,11 @@
     .features-bar { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .hero h1 { font-size: 2rem; }
-    .pricing-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="nav-brand">ParkSmart NJIT</div>
   <ul class="nav-links">
@@ -844,7 +601,6 @@
   <button class="nav-btn" onclick="openLogin()">Login / Sign Up</button>
 </nav>
 
-<!-- ===== HOME PAGE ===== -->
 <div id="home" class="page active">
   <div class="hero">
     <h1>Find Parking at NJIT<br>Before You Arrive</h1>
@@ -854,7 +610,6 @@
       <button class="btn-outline" onclick="navigate('pricing')">See Pricing</button>
     </div>
   </div>
-
   <div class="features-bar">
     <div class="feature-item">
       <div class="feature-icon">🅿️</div>
@@ -872,54 +627,24 @@
       <p>Push notifications to your phone</p>
     </div>
   </div>
-
   <div class="garage-section">
     <div class="section-title">Current Garage Status</div>
     <table>
       <thead>
         <tr>
-          <th>Garage</th>
-          <th>Location</th>
-          <th>Spots Available</th>
-          <th>% Full</th>
-          <th>Status</th>
+          <th>Garage</th><th>Location</th><th>Spots Available</th><th>% Full</th><th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Garage 1</td>
-          <td>Warren St.</td>
-          <td>84</td>
-          <td>42%</td>
-          <td><span class="badge badge-green">Open</span></td>
-        </tr>
-        <tr>
-          <td>Garage 2</td>
-          <td>Summit St.</td>
-          <td>22</td>
-          <td>78%</td>
-          <td><span class="badge badge-yellow">Limited</span></td>
-        </tr>
-        <tr>
-          <td>Garage 3</td>
-          <td>MLK Blvd.</td>
-          <td>2</td>
-          <td>99%</td>
-          <td><span class="badge badge-red">Full</span></td>
-        </tr>
-        <tr>
-          <td>Garage 4</td>
-          <td>Bleeker St.</td>
-          <td>110</td>
-          <td>31%</td>
-          <td><span class="badge badge-green">Open</span></td>
-        </tr>
+        <tr><td>Garage 1</td><td>Warren St.</td><td>84</td><td>42%</td><td><span class="badge badge-green">Open</span></td></tr>
+        <tr><td>Garage 2</td><td>Summit St.</td><td>22</td><td>78%</td><td><span class="badge badge-yellow">Limited</span></td></tr>
+        <tr><td>Garage 3</td><td>MLK Blvd.</td><td>2</td><td>99%</td><td><span class="badge badge-red">Full</span></td></tr>
+        <tr><td>Garage 4</td><td>Bleeker St.</td><td>110</td><td>31%</td><td><span class="badge badge-green">Open</span></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ===== DASHBOARD PAGE ===== -->
 <div id="dashboard" class="page">
   <div class="dashboard-layout">
     <div class="sidebar">
@@ -933,49 +658,30 @@
       </ul>
     </div>
     <div class="dashboard-main">
-      <div class="dash-header">
-        <div class="dash-title">Live Garage Dashboard</div>
-      </div>
-      <div class="live-badge">
-        <div class="live-dot"></div>
-        Last updated: 9:14 AM &nbsp;● Live
-      </div>
-      <div class="alert-banner">
-        ⭐ <strong>Premium:</strong> Garage 3 predicted to open in ~22 min based on 10AM class dismissals
-      </div>
+      <div class="dash-header"><div class="dash-title">Live Garage Dashboard</div></div>
+      <div class="live-badge"><div class="live-dot"></div>Last updated: 9:14 AM &nbsp;● Live</div>
+      <div class="alert-banner">⭐ <strong>Premium:</strong> Garage 3 predicted to open in ~22 min based on 10AM class dismissals</div>
       <div class="garage-cards">
         <div class="garage-card">
-          <div class="garage-card-header">
-            <h4>Garage 1 – Warren St.</h4>
-            <span class="badge badge-green">Open</span>
-          </div>
+          <div class="garage-card-header"><h4>Garage 1 – Warren St.</h4><span class="badge badge-green">Open</span></div>
           <div class="spots">84 spots free</div>
           <div class="progress-bar"><div class="progress-fill fill-green" style="width:42%"></div></div>
           <div class="pct-label">42% full</div>
         </div>
         <div class="garage-card">
-          <div class="garage-card-header">
-            <h4>Garage 2 – Summit St.</h4>
-            <span class="badge badge-yellow">Limited</span>
-          </div>
+          <div class="garage-card-header"><h4>Garage 2 – Summit St.</h4><span class="badge badge-yellow">Limited</span></div>
           <div class="spots">22 spots free</div>
           <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:78%"></div></div>
           <div class="pct-label">78% full</div>
         </div>
         <div class="garage-card">
-          <div class="garage-card-header">
-            <h4>Garage 3 – MLK Blvd.</h4>
-            <span class="badge badge-red">Full</span>
-          </div>
+          <div class="garage-card-header"><h4>Garage 3 – MLK Blvd.</h4><span class="badge badge-red">Full</span></div>
           <div class="spots">2 spots free</div>
           <div class="progress-bar"><div class="progress-fill fill-red" style="width:99%"></div></div>
           <div class="pct-label">99% full</div>
         </div>
         <div class="garage-card">
-          <div class="garage-card-header">
-            <h4>Garage 4 – Bleeker St.</h4>
-            <span class="badge badge-green">Open</span>
-          </div>
+          <div class="garage-card-header"><h4>Garage 4 – Bleeker St.</h4><span class="badge badge-green">Open</span></div>
           <div class="spots">110 spots free</div>
           <div class="progress-bar"><div class="progress-fill fill-green" style="width:31%"></div></div>
           <div class="pct-label">31% full</div>
@@ -1000,19 +706,14 @@
   </div>
 </div>
 
-<!-- ===== PRICING PAGE ===== -->
 <div id="pricing" class="page">
   <div class="pricing-page">
     <div class="pricing-title"><h1>Choose Your Plan</h1></div>
     <div class="pricing-subtitle">All plans include live garage availability. Upgrade anytime.</div>
     <div class="pricing-grid">
-      <!-- Free -->
       <div class="plan-card">
         <div class="plan-name">Free</div>
-        <div class="plan-price">
-          <span class="amount">$0</span>
-          <span class="period">/ forever</span>
-        </div>
+        <div class="plan-price"><span class="amount">$0</span><span class="period">/ forever</span></div>
         <ul class="plan-features">
           <li>Live garage availability</li>
           <li>Basic spot count</li>
@@ -1021,14 +722,10 @@
         </ul>
         <button class="plan-btn plan-btn-outline" onclick="openCheckout('Free Plan','$0')">Get Started</button>
       </div>
-      <!-- Student Premium -->
       <div class="plan-card featured">
         <div class="popular-tag">⭐ Most Popular</div>
         <div class="plan-name">Student Premium</div>
-        <div class="plan-price">
-          <span class="amount">$4.99</span>
-          <span class="period">/ month</span>
-        </div>
+        <div class="plan-price"><span class="amount">$4.99</span><span class="period">/ month</span></div>
         <ul class="plan-features">
           <li>Everything in Free</li>
           <li>Wait-time estimates</li>
@@ -1037,13 +734,9 @@
         </ul>
         <button class="plan-btn plan-btn-primary" onclick="openCheckout('Student Premium','$4.99/month')">Subscribe Now</button>
       </div>
-      <!-- Semester Pass -->
       <div class="plan-card">
         <div class="plan-name">Semester Pass</div>
-        <div class="plan-price">
-          <span class="amount">$30</span>
-          <span class="period">/ semester</span>
-        </div>
+        <div class="plan-price"><span class="amount">$30</span><span class="period">/ semester</span></div>
         <ul class="plan-features">
           <li>Everything in Student</li>
           <li>Peak-hour alerts</li>
@@ -1052,13 +745,20 @@
         </ul>
         <button class="plan-btn plan-btn-primary" onclick="openCheckout('Semester Pass','$30/semester')">Subscribe Now</button>
       </div>
-      <!-- Faculty -->
+      <div class="plan-card">
+        <div class="plan-name">Annual Pass</div>
+        <div class="plan-price"><span class="amount">$49</span><span class="period">/ year</span></div>
+        <ul class="plan-features">
+          <li>Everything in Semester</li>
+          <li>Unlimited alerts</li>
+          <li>Parking analytics report</li>
+          <li>Best value long-term!</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openCheckout('Annual Pass','$49/year')">Subscribe Now</button>
+      </div>
       <div class="plan-card">
         <div class="plan-name">Faculty / Staff</div>
-        <div class="plan-price">
-          <span class="amount">$6.99</span>
-          <span class="period">/ month</span>
-        </div>
+        <div class="plan-price"><span class="amount">$6.99</span><span class="period">/ month</span></div>
         <ul class="plan-features">
           <li>Everything in Student</li>
           <li>Priority alerts</li>
@@ -1072,7 +772,6 @@
   </div>
 </div>
 
-<!-- ===== ABOUT PAGE ===== -->
 <div id="about" class="page">
   <div class="about-page">
     <div class="about-hero">
@@ -1089,9 +788,7 @@
         <h2>The Problem We Solve</h2>
         <p>NJIT commuter students waste time circling full garages, especially between 9–11AM when class loads peak. Existing apps like ParkMobile and SpotHero handle payment and city parking — but none predict campus garage turnover. That's the gap ParkSmart fills.</p>
         <table class="competitor-table">
-          <thead>
-            <tr><th>Feature</th><th>ParkMobile</th><th>SpotHero</th><th>ParkSmart NJIT</th></tr>
-          </thead>
+          <thead><tr><th>Feature</th><th>ParkMobile</th><th>SpotHero</th><th>ParkSmart NJIT</th></tr></thead>
           <tbody>
             <tr><td>Live garage availability</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
             <tr><td>Campus-specific data</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
@@ -1107,61 +804,32 @@
       </div>
       <div class="about-section">
         <h2>Mobile Responsiveness</h2>
-        <p>ParkSmart NJIT is built with Bootstrap and a mobile-first approach. The dashboard, garage status table, and pricing cards all reflow cleanly on screens under 768px. Buttons and menus are touch-optimized. The site has been tested on iPhone and Android screen sizes and maintains full functionality at all breakpoints.</p>
+        <p>ParkSmart NJIT is built with a mobile-first approach. The dashboard, garage status table, and pricing cards all reflow cleanly on screens under 768px. Buttons and menus are touch-optimized. The site maintains full functionality at all breakpoints.</p>
       </div>
       <div class="about-section">
         <h2>Our Team</h2>
         <div class="team-grid">
-          <div class="team-card">
-            <div class="team-avatar">AR</div>
-            <h4>Alexander Rivera</h4>
-            <p>Team Lead</p>
-          </div>
-          <div class="team-card">
-            <div class="team-avatar">AM</div>
-            <h4>Akaash Manickavel</h4>
-            <p>Backend / Database</p>
-          </div>
-          <div class="team-card">
-            <div class="team-avatar">AM</div>
-            <h4>Arjun Merchant</h4>
-            <p>Frontend / Design</p>
-          </div>
-          <div class="team-card">
-            <div class="team-avatar">ST</div>
-            <h4>Shafil Kabir Turzo</h4>
-            <p>Business / Research</p>
-          </div>
+          <div class="team-card"><div class="team-avatar">AR</div><h4>Alexander Rivera</h4><p>Team Lead</p></div>
+          <div class="team-card"><div class="team-avatar">AM</div><h4>Akaash Manickavel</h4><p>Backend / Database</p></div>
+          <div class="team-card"><div class="team-avatar">AM</div><h4>Arjun Merchant</h4><p>Frontend / Design</p></div>
+          <div class="team-card"><div class="team-avatar">ST</div><h4>Shafil Kabir Turzo</h4><p>Business / Research</p></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== CHECKOUT MODAL ===== -->
 <div class="modal-overlay" id="checkoutModal">
   <div class="modal">
     <div id="checkoutForm">
       <h2>Subscribe</h2>
       <p style="font-size:0.85rem;color:var(--gray)">Stripe Test Mode — use card 4242 4242 4242 4242</p>
       <div class="plan-summary" id="planSummary"></div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@njit.edu">
-      </div>
-      <div class="form-group">
-        <label>Card Number</label>
-        <input type="text" placeholder="4242 4242 4242 4242" maxlength="19">
-      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@njit.edu"></div>
+      <div class="form-group"><label>Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19"></div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Expiry</label>
-          <input type="text" placeholder="MM / YY" maxlength="7">
-        </div>
-        <div class="form-group">
-          <label>CVC</label>
-          <input type="text" placeholder="123" maxlength="3">
-        </div>
+        <div class="form-group"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7"></div>
+        <div class="form-group"><label>CVC</label><input type="text" placeholder="123" maxlength="3"></div>
       </div>
       <div class="modal-btns">
         <button class="btn-cancel" onclick="closeCheckout()">Cancel</button>
@@ -1177,19 +845,12 @@
   </div>
 </div>
 
-<!-- ===== LOGIN MODAL ===== -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <div class="login-form" id="loginForm">
       <h2>Login / Sign Up</h2>
-      <div class="form-group" style="margin-top:20px">
-        <label>NJIT Email</label>
-        <input type="email" placeholder="you@njit.edu">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" placeholder="••••••••">
-      </div>
+      <div class="form-group" style="margin-top:20px"><label>NJIT Email</label><input type="email" placeholder="you@njit.edu"></div>
+      <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"></div>
       <div class="modal-btns">
         <button class="btn-cancel" onclick="closeLogin()">Cancel</button>
         <button class="btn-pay" onclick="doLogin()">Login</button>
@@ -1206,7 +867,6 @@
 </div>
 
 <script>
-  // Navigation
   function navigate(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
@@ -1216,13 +876,9 @@
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      navigate(link.dataset.page);
-    });
+    link.addEventListener('click', e => { e.preventDefault(); navigate(link.dataset.page); });
   });
 
-  // Checkout
   function openCheckout(plan, price) {
     document.getElementById('planSummary').innerHTML = `<strong>${plan}</strong> — <span style="color:var(--red);font-weight:700">${price}</span>`;
     document.getElementById('checkoutForm').style.display = 'block';
@@ -1230,36 +886,28 @@
     document.getElementById('checkoutModal').classList.add('open');
   }
 
-  function closeCheckout() {
-    document.getElementById('checkoutModal').classList.remove('open');
-  }
+  function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
 
   function processPayment() {
     document.getElementById('checkoutForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
   }
 
-  // Login
   function openLogin() {
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('loginSuccess').style.display = 'none';
     document.getElementById('loginModal').classList.add('open');
   }
 
-  function closeLogin() {
-    document.getElementById('loginModal').classList.remove('open');
-  }
+  function closeLogin() { document.getElementById('loginModal').classList.remove('open'); }
 
   function doLogin() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('loginSuccess').style.display = 'block';
   }
 
-  // Close modals on overlay click
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) overlay.classList.remove('open');
-    });
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
   });
 </script>
 </body>
